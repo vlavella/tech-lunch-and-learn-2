@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import UseCallBackSample from "./use-callback/Sample";
+import SampleMemo from "./use-memo/SampleMemo";
+import ReUseHooksSample from "./re-use-hooks/ReUseHooksSample";
+import "./App.css";
 
 function App() {
+  const [sample, setSample] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="header">
+        <label onClick={() => setSample(1)} className="item">
+          Use Callback
+        </label>
+        <label onClick={() => setSample(2)} className="item">
+          Use Memo
+        </label>
+        <label onClick={() => setSample(4)} className="item">
+          Re use hooks
+        </label>
+      </div>
+
+      {sample === 1 && <UseCallBackSample />}
+      {sample === 2 && <SampleMemo />}
+      {sample === 4 && <ReUseHooksSample />}
     </div>
   );
 }
